@@ -35,27 +35,23 @@ public class OutputNeuron implements Neuron {
             this.countDownLatch = new CountDownLatch(dendri.size());
             this.valueAccumulator = new ValueAccumulator();
 
-            new Thread(new Runnable() {
-
-                @Override
-                public void run() {
-                    try {
-                        countDownLatch.await();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    double value = valueAccumulator.getValue();
-                    double sigmoidOutput = Calculus.sigmoid(value);
-
-                    System.out.println("Output value: " + sigmoidOutput);
+            new Thread(() -> {
+                try {
+                    countDownLatch.await();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
+
+                double value = valueAccumulator.getValue();
+                double sigmoidOutput = Calculus.sigmoid(value);
+
+                System.out.println("Output value: " + sigmoidOutput);
             }).start();
         }
 
+
         this.valueAccumulator.accum(input);
         this.countDownLatch.countDown();
-
     }
 
 }

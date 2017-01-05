@@ -25,4 +25,12 @@ public class Synapse {
 
     public void addDownstreamNeuron(Neuron outputNeuron) {this.downstreamNeuron = outputNeuron; }
 
+    @Override
+    public String toString() {
+        return "Synapse{" +
+                "upstreamNeuron=" + upstreamNeuron +
+                ", downstreamNeuron=" + downstreamNeuron +
+                ", weight=" + weight +
+                '}';
+    }
 }

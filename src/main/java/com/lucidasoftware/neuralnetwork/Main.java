@@ -5,7 +5,8 @@ public class Main {
     public static void main(String[] args) {
 
         NetworkBuilder networkBuilder = new NetworkBuilder();
-        networkBuilder.fire(0.2);
+        networkBuilder.fireNeuron1(1);
+        networkBuilder.fireNeuron2(1);
     }
 
 }

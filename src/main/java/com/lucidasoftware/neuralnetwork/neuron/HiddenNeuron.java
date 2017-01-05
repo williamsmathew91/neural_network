@@ -12,7 +12,6 @@ public class HiddenNeuron implements Neuron {
     private final List<Synapse> dendri;
     private Synapse axon;
 
-
     private final ValueAccumulator valueAccumulator = new ValueAccumulator();
 
     private CountDownLatch countDownLatch;
@@ -43,8 +42,8 @@ public class HiddenNeuron implements Neuron {
             }).start();
         }
 
-        this.countDownLatch.countDown();
         this.valueAccumulator.accum(synapseInput);
+        this.countDownLatch.countDown();
     }
 
     public void connectAxon(Synapse axon) {
